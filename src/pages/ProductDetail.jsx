@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { Rating } from "../components";
 
@@ -9,6 +9,10 @@ export const ProductDetail = () => {
     <main>
       <section>
         <h1 className="mt-10 mb-5 text-4xl text-center font-bold text-gray-900 dark:text-slate-200">
+          <Link
+            to="/products/"
+            className="bi bi-arrow-bar-left inline-flex mr-4 mb-4 items-center py-2 px-5 text-lg font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800"
+          ></Link>
           {data.name}
         </h1>
         <p className="mb-5 text-lg text-center text-gray-900 dark:text-slate-200">
@@ -16,7 +20,7 @@ export const ProductDetail = () => {
         </p>
         <div className="flex flex-wrap justify-around">
           <div className="max-w-xl my-3">
-            <img className="rounded" src="" alt="" />
+            <img className="rounded" src={data.poster} alt="" />
           </div>
           <div className="max-w-xl my-3">
             <p className="text-3xl font-bold text-gray-900 dark:text-slate-200">
