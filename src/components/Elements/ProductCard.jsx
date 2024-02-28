@@ -9,7 +9,7 @@ export const ProductCard = () => {
         </span>
         <img
           className="rounded-t-lg w-full h-64"
-          src="/assets/images/10001.avif"
+          src="https://www.shutterstock.com/image-vector/vector-collection-web-development-shield-260nw-1757407322.jpg"
           alt=""
         />
       </Link>
