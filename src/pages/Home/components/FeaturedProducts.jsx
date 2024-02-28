@@ -9,7 +9,7 @@ export const FeaturedProducts = () => {
         Featured eBooks
       </h1>
       <div className="flex flex-wrap justify-center lg:flex-row">
-        {data.array.map((product) => (<ProductCard product={product} />))}
+        {data.map((product) => (<ProductCard key={product.id} product={product} />))}
       </div>
     </section>
   );
