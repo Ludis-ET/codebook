@@ -1,16 +1,18 @@
 import { useState } from "react";
-import { ProductCard } from "../../components/Elements/ProductCard";
+import { ProductCard } from "../../components";
 import { FilterBar } from "./components/FilterBar";
+import { useFetch } from "../../hooks/useFetch";
 
 export const ProductsList = () => {
   const [show, setShow] = useState(false);
+  const { data } = useFetch("http://localhost:3001/products");
 
   return (
     <main>
       <section className="my-5">
         <div className="my-5 flex justify-between">
           <span className="text-2xl font-semibold dark:text-slate-100 mb-5">
-            All eBooks (15)
+            All eBooks ({data.length})
           </span>
           <span>
             <button
@@ -34,7 +36,9 @@ export const ProductsList = () => {
         </div>
 
         <div className="flex flex-wrap justify-center lg:flex-row">
-          <ProductCard />
+          {data.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
         </div>
       </section>
 

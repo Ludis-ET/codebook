@@ -1,4 +1,4 @@
-import { ProductCard } from "../../../components/Elements/ProductCard";
+import { ProductCard } from "../../../components";
 import { useFetch } from "../../../hooks/useFetch";
 
 export const FeaturedProducts = () => {
@@ -9,7 +9,9 @@ export const FeaturedProducts = () => {
         Featured eBooks
       </h1>
       <div className="flex flex-wrap justify-center lg:flex-row">
-        {data.map((product) => (<ProductCard key={product.id} product={product} />))}
+        {data.map((product) => (
+          <ProductCard key={product.id} product={product} />
+        ))}
       </div>
     </section>
   );
