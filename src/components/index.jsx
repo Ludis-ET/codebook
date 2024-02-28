@@ -1,3 +1,4 @@
+export { ScrollToTop } from "./Other/ScrollToTop";
 export { Rating } from "./Elements/Rating";
 export { ProductCard } from "./Elements/ProductCard";
 export { Header } from "./Layouts/Header";
