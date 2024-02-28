@@ -1,8 +1,10 @@
 export const Rating = ({ rating }) => {
   const renderStars = () => {
     const stars = [];
+    const tolerance = 0.1; // Adjust the tolerance as needed
+
     for (let i = 1; i <= 5; i++) {
-      if (i <= rating) {
+      if (i <= rating - tolerance) {
         // Full star
         stars.push(
           <i
@@ -10,7 +12,7 @@ export const Rating = ({ rating }) => {
             className="text-lg bi bi-star-fill text-yellow-500 mr-1"
           ></i>
         );
-      } else if (i - 0.5 <= rating) {
+      } else if (i - 0.5 <= rating + tolerance) {
         // Half star
         stars.push(
           <i
