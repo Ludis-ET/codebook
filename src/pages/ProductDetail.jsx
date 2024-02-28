@@ -4,16 +4,14 @@ import { useFetch } from "../hooks/useFetch";
 export const ProductDetail = () => {
   const { id } = useParams();
   const { data } = useFetch(`http://localhost:3001/products/${id}`);
-  console.log(data)
   return (
     <main>
       <section>
         <h1 className="mt-10 mb-5 text-4xl text-center font-bold text-gray-900 dark:text-slate-200">
-          The Complete Guide to Backend Development
+          {data.name}
         </h1>
         <p className="mb-5 text-lg text-center text-gray-900 dark:text-slate-200">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Error unde
-          quisquam magni vel eligendi nam.
+          {data.overview}
         </p>
         <div className="flex flex-wrap justify-around">
           <div className="max-w-xl my-3">
@@ -22,7 +20,7 @@ export const ProductDetail = () => {
           <div className="max-w-xl my-3">
             <p className="text-3xl font-bold text-gray-900 dark:text-slate-200">
               <span className="mr-1">$</span>
-              <span className="">29</span>
+              <span className="">{data.price}</span>
             </p>
             <p className="my-3">
               <span>
