@@ -1,15 +1,17 @@
 import { useState, useEffect } from "react";
+import { useFilter } from "../context";
 
 export const useFetch = (url) => {
-  const [data, setData] = useState([]);
+  const { productList, initialProductList } = useFilter();
 
   useEffect(() => {
     async function handleFetch() {
       const response = await fetch(url);
       const result = await response.json();
-      setData(result);
+      initialProductList(result);
+      console.log(productList)
     }
     handleFetch();
   }, [url]);
-  return { data };
+  return { productList };
 };
