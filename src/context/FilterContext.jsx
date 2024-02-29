@@ -16,7 +16,7 @@ export const FilterProvider = ({ children }) => {
   function initialProductList(products) {
     dispatch({
       type: "PRODUCT_LIST",
-      payloads:{
+      payload:{
         products:products
       }
     });
