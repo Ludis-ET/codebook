@@ -4,6 +4,7 @@ import { FilterBar } from "./components/FilterBar";
 import { useFetch, useSearch, useTitle } from "../../hooks";
 import { useLocation } from "react-router-dom";
 
+
 export const ProductsList = () => {
   const [show, setShow] = useState(false);
   const search = useLocation().search;
