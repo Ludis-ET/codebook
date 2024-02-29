@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { ProductCard } from "../../components";
 import { FilterBar } from "./components/FilterBar";
-import { useFetch } from "../../hooks/useFetch";
+import { useSearch } from "../../hooks/useSearch";
 
 export const ProductsList = () => {
   const [show, setShow] = useState(false);
-  const { data } = useFetch("http://localhost:3001/name->django");
+  const searchTerm = URLSearchParams(search).get("q");
+  const { data } = useSearch("http://localhost:3001/products", "react");
 
   return (
     <main>

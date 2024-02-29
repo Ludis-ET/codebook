@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react";
 
-export const useFetch = (url, serach) => {
+export const useSearch = (url, search) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     async function handleFetch() {
       const response = await fetch(url);
       const result = await response.json();
-      setData(result);
+      const searched = result.filter((res) =>
+        res.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setData(searched);
     }
     handleFetch();
-  }, [url]);
+  }, [search]);
   return { data };
 };
