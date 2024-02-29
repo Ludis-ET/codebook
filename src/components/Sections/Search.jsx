@@ -1,12 +1,22 @@
+import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
 export const Search = () => {
+  const navigate = useNavigate();
+  const search = useRef();
+  function handleSubmit(e) {
+    e.preventDefault();
+    navigate(`/products?q=${search.current.value}`);
+  }
   return (
     <div className="mx-auto max-w-screen-xl p-2 my-5">
-      <form className="flex items-center">
+      <form className="flex items-center" onSubmit={handleSubmit}>
         <div className="relative w-full">
           <span className="bi bi-search flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></span>
           <input
             name="search"
             type="text"
+            ref={search}
             id="simple-search"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search"

@@ -1,5 +1,5 @@
 import { ProductCard } from "../../../components";
-import { useFetch } from "../../../hooks/useFetch";
+import { useFetch } from "../../../hooks";
 
 export const FeaturedProducts = () => {
   const { data } = useFetch("http://localhost:3001/featured_products");

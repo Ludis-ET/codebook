@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useFetch } from "../hooks/useFetch";
+import { useFetch } from "../hooks";
 import { Rating } from "../components";
 
 export const ProductDetail = () => {

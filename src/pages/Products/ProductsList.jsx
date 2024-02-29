@@ -1,19 +1,23 @@
 import { useState } from "react";
 import { ProductCard } from "../../components";
 import { FilterBar } from "./components/FilterBar";
-import { useSearch } from "../../hooks/useSearch";
+import { useFetch, useSearch } from "../../hooks";
+import { useLocation } from "react-router-dom";
 
 export const ProductsList = () => {
   const [show, setShow] = useState(false);
-  const searchTerm = URLSearchParams(search).get("q");
-  const { data } = useSearch("http://localhost:3001/products", "react");
+  const search = useLocation().search;
+  const searchTerm = new URLSearchParams(search).get("q");
+  const { data } = searchTerm
+    ? useSearch("http://localhost:3001/products", searchTerm)
+    : useFetch("http://localhost:3001/products");
 
   return (
     <main>
       <section className="my-5">
         <div className="my-5 flex justify-between">
           <span className="text-2xl font-semibold dark:text-slate-100 mb-5">
-            All eBooks ({data.length})
+            {searchTerm ? "Search Results " : "All eBooks"} ({data.length})
           </span>
           <span>
             <button
