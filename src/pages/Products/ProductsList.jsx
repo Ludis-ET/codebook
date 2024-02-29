@@ -5,7 +5,7 @@ import { useFetch } from "../../hooks/useFetch";
 
 export const ProductsList = () => {
   const [show, setShow] = useState(false);
-  const { data } = useFetch("http://localhost:3001/products");
+  const { data } = useFetch("http://localhost:3001/name->django");
 
   return (
     <main>
