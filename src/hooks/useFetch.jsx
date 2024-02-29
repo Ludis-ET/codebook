@@ -9,7 +9,7 @@ export const useFetch = (url) => {
       const response = await fetch(url);
       const result = await response.json();
       initialProductList(result);
-      console.log(productList)
+      console.log(productList);
     }
     handleFetch();
   }, [url]);

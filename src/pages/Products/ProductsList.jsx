@@ -12,8 +12,7 @@ export const ProductsList = () => {
   useTitle(
     searchTerm ? `search product with title ${searchTerm}` : "Product List Page"
   );
-  const { productList: data } = useFilter();
-  searchTerm
+  const { productList: data } = searchTerm
     ? useSearch("http://localhost:3001/products", searchTerm)
     : useFetch("http://localhost:3001/products");
 

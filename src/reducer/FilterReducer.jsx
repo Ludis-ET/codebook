@@ -2,7 +2,7 @@ export const FilterReducer = (state, action) => {
   const { type, payload } = action;
   switch (type) {
     case "PRODUCT_LIST":
-      return {productList:payload.products};
+      return { productList: payload.products };
 
     case "SORT_BY":
       return;
