@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
+import { useFilter } from "../context";
 
 export const useSearch = (url, search) => {
-  const [data, setData] = useState([]);
+  const { productList, initialProductList } = useFilter();
 
   useEffect(() => {
     async function handleFetch() {
@@ -10,9 +11,9 @@ export const useSearch = (url, search) => {
       const searched = result.filter((res) =>
         res.name.toLowerCase().includes(search.toLowerCase())
       );
-      setData(searched);
+      initialProductList(searched);
     }
     handleFetch();
   }, [search]);
-  return { data };
+  return { productList };
 };

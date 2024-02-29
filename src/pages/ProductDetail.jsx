@@ -4,7 +4,9 @@ import { Rating } from "../components";
 
 export const ProductDetail = () => {
   const { id } = useParams();
-  const { data } = useFetch(`http://localhost:3001/products/${id}`);
+  const { productList: data } = useFetch(
+    `http://localhost:3001/products/${id}`
+  );
   useTitle(`${data.name} detail`);
   return (
     <main>
