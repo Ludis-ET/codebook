@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { ProductCard } from "../../components";
 import { FilterBar } from "./components/FilterBar";
-import { useFetch, useSearch } from "../../hooks";
+import { useFetch, useSearch, useTitle } from "../../hooks";
 import { useLocation } from "react-router-dom";
 
 export const ProductsList = () => {
   const [show, setShow] = useState(false);
   const search = useLocation().search;
   const searchTerm = new URLSearchParams(search).get("q");
+  useTitle(searchTerm ? `search product with title ${searchTerm}` : "Product List Page");
   const { data } = searchTerm
     ? useSearch("http://localhost:3001/products", searchTerm)
     : useFetch("http://localhost:3001/products");
