@@ -5,6 +5,7 @@ import { Search } from "../Sections/Search";
 import { DropdownLoggedOut, DropdownLoggedIn } from "../../components";
 
 export const Header = () => {
+  const [drop, setDrop] = useState(false);
   const [dark, setDark] = useState(
     JSON.parse(localStorage.getItem("darkmode")) || false
   );
@@ -42,9 +43,9 @@ export const Header = () => {
               onClick={() => setSearch(!search)}
             ></span>
 
-            <Link to="/products" className="text-gray-700 dark:text-white mr-5">
+            {/* <Link to="/products" className="text-gray-700 dark:text-white mr-5">
               <span className="text-2xl bi bi-box-seam-fill relative"></span>
-            </Link>
+            </Link> */}
             <Link to="/cart" className="text-gray-700 dark:text-white mr-5">
               <span className="text-2xl bi bi-cart-fill relative">
                 <span className="text-white text-sm absolute -top-1 left-2.5 bg-rose-500 px-1 rounded-full ">
@@ -52,8 +53,11 @@ export const Header = () => {
                 </span>
               </span>
             </Link>
-            <span className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
-            
+            <span
+              onClick={() => setDrop(!drop)}
+              className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"
+            ></span>
+            {drop && <DropdownLoggedOut />}
           </div>
         </div>
       </nav>
