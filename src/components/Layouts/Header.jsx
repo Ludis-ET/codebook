@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import { Search } from "../Sections/Search";
+import { DropdownLoggedOut, DropdownLoggedIn } from "../../components";
 
 export const Header = () => {
   const [dark, setDark] = useState(
@@ -52,6 +53,7 @@ export const Header = () => {
               </span>
             </Link>
             <span className="bi bi-person-circle cursor-pointer text-2xl text-gray-700 dark:text-white"></span>
+            
           </div>
         </div>
       </nav>
