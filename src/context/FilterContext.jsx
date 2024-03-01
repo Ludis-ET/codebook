@@ -22,7 +22,15 @@ export const FilterProvider = ({ children }) => {
     });
   }
   function bestSeller(products) {
-    return products.filter((product) => product.best_seller === true);
+    return state.bestSellerOnly
+      ? products.filter((product) => product.best_seller === true)
+      : products;
+  }
+
+  function inStock(products) {
+    return state.onlyInStock
+      ? products.filter((product) => product.in_stock === true)
+      : products;
   }
 
   function sort(products) {
@@ -34,21 +42,23 @@ export const FilterProvider = ({ children }) => {
     }
   }
 
-  function rating(products){
-    if(state.ratings === "4STARSABOVE"){
-        return products.filter(product => product.rating >= 4);
+  function rating(products) {
+    if (state.ratings === "4STARSABOVE") {
+      return products.filter((product) => product.rating >= 4);
     }
-    if(state.ratings === "3STARSABOVE"){
-        return products.filter(product => product.rating >= 3);
+    if (state.ratings === "3STARSABOVE") {
+      return products.filter((product) => product.rating >= 3);
     }
-    if(state.ratings === "2STARSABOVE"){
-        return products.filter(product => product.rating >= 2);
+    if (state.ratings === "2STARSABOVE") {
+      return products.filter((product) => product.rating >= 2);
     }
-    if(state.ratings === "1STARSABOVE"){
-        return products.filter(product => product.rating >= 1);
+    if (state.ratings === "1STARSABOVE") {
+      return products.filter((product) => product.rating >= 1);
     }
     return products;
-}
+  }
+
+  const filteredProductList = bestSeller(sort(rating(state.productList)));
   const value = {
     productList: state.productList,
     initialProductList,
