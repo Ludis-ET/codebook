@@ -58,9 +58,9 @@ export const FilterProvider = ({ children }) => {
     return products;
   }
 
-  const filteredProductList = bestSeller(sort(rating(state.productList)));
+  const filteredProductList = inStock(bestSeller(sort(rating(state.productList))));
   const value = {
-    productList: state.productList,
+    productList: filteredProductList,
     initialProductList,
   };
   return (
