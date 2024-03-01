@@ -21,6 +21,9 @@ export const FilterProvider = ({ children }) => {
       }
     });
   }
+  function bestSeller(products){
+    return products.filter(product => product.best_seller === true)
+  }
   const value = {
     productList: state.productList,
     initialProductList,
