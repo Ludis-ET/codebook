@@ -38,8 +38,9 @@ export const FilterProvider = ({ children }) => {
       return products.sort((a, b) => Number(a.price) - Number(b.price));
     }
     if (state.sortBy === "hightolow") {
-      return products.sort((b, a) => Number(a.price) - Number(b.price));
+      return products.sort((a, b) => Number(b.price) - Number(a.price));
     }
+    return products;
   }
 
   function rating(products) {
@@ -58,10 +59,14 @@ export const FilterProvider = ({ children }) => {
     return products;
   }
 
-  const filteredProductList = inStock(bestSeller(sort(rating(state.productList))));
+  const filteredProductList = rating(
+    sort(inStock(bestSeller(state.productList)))
+  );
   const value = {
     productList: filteredProductList,
     initialProductList,
+    state,
+    dispatch,
   };
   return (
     <FilterContext.Provider value={value}>{children}</FilterContext.Provider>
